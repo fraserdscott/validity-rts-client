@@ -4,9 +4,11 @@ import rollup from "./out/Rollup.sol/Rollup.json"
 import frameRenderer, { RED_TEAM_COLOR, BLUE_TEAM_COLOR } from "./frameRenderer";
 import { addressEquals, distance, INITIAL_UNITS, Lobby, MoveEvent, simulate, Unit, UnitType } from "./utils";
 
-const ROLLUP_ADDRESS = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
+export const RPC_URL = "https://l2.op-bedrock.lattice.xyz";
+export const ROLLUP_ADDRESS = "0x02e8910b3b89690d4aec9fcc0ae2cd16fb6a4828";
+
 const wallet = ethers.Wallet.fromMnemonic("test test test test test test test test test test test junk")
-  .connect(ethers.getDefaultProvider("http://localhost:8545"));
+  .connect(ethers.getDefaultProvider(RPC_URL));
 
 const move = (index: string, wallet: ethers.Wallet, selected: number, goalX: number, goalY: number) => {
   const contract = new ethers.Contract(ROLLUP_ADDRESS, rollup.abi, wallet);
@@ -15,7 +17,6 @@ const move = (index: string, wallet: ethers.Wallet, selected: number, goalX: num
 }
 
 const settle = async (index: string, wallet: ethers.Wallet) => {
-
   const contract = new ethers.Contract(ROLLUP_ADDRESS, rollup.abi, wallet);
   contract.settle(index, '0x');
 }

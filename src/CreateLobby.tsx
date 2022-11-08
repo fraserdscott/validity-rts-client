@@ -2,10 +2,10 @@ import './App.css';
 import { ethers } from "ethers";
 import rollup from "./out/Rollup.sol/Rollup.json"
 import { useState } from 'react';
+import { ROLLUP_ADDRESS, RPC_URL } from './Game';
 
-const ROLLUP_ADDRESS = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
 const wallet = ethers.Wallet.fromMnemonic("test test test test test test test test test test test junk")
-  .connect(ethers.getDefaultProvider("http://localhost:8545"));
+  .connect(ethers.getDefaultProvider(RPC_URL));
 
 const createLobby = async (startTimestamp: string, duration: number, wallet: ethers.Wallet, players: [string, string]) => {
   const contract = new ethers.Contract(ROLLUP_ADDRESS, rollup.abi, wallet);

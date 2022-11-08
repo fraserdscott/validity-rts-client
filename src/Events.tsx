@@ -1,10 +1,10 @@
 import rollup from "./out/Rollup.sol/Rollup.json"
 import { ethers } from "ethers";
 import { useEffect, useState } from "react";
+import { ROLLUP_ADDRESS, RPC_URL } from "./Game";
 
-const ROLLUP_ADDRESS = "0x5fbdb2315678afecb367f032d93f642f64180aa3"
 const wallet = ethers.Wallet.fromMnemonic("test test test test test test test test test test test junk")
-  .connect(ethers.getDefaultProvider("http://localhost:8545"));
+  .connect(ethers.getDefaultProvider(RPC_URL));
 
 function Events() {
   const [events, setEvents] = useState<Array<ethers.Event>>([]);

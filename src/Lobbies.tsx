@@ -4,10 +4,10 @@ import { ethers } from "ethers";
 import rollup from "./out/Rollup.sol/Rollup.json"
 import { useEffect, useState } from 'react';
 import CreateLobby from './CreateLobby';
+import { ROLLUP_ADDRESS, RPC_URL } from './Game';
 
-const ROLLUP_ADDRESS = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
 const wallet = ethers.Wallet.fromMnemonic("test test test test test test test test test test test junk")
-  .connect(ethers.getDefaultProvider("http://localhost:8545"));
+  .connect(ethers.getDefaultProvider(RPC_URL));
 
 const formatAddress = (a: string) => `${a.slice(0, 6)}...${a.slice(-2)}`;
 
