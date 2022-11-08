@@ -16,7 +16,7 @@ function Events() {
 
     let moveFilter = contract.filters.Move();
     contract.queryFilter(moveFilter).then(setMoveEvents);
-    
+
     let createdFilter = contract.filters.LobbyCreated();
     contract.queryFilter(createdFilter).then(setCreatedEvents);
   }, []);
@@ -52,15 +52,15 @@ function Events() {
       <thead>
         <tr>
           <th>Lobby</th>
-          <th>Start timestamps</th>
+          <th>Start timestamp</th>
           <th>Duration</th>
         </tr>
       </thead>
       <tbody>
         {createdEvents.length > 0 ? createdEvents.map((e, i) => e.args ? <tr key={i}>
           <td>{e.args.lobbyId.toString()}</td>
-          <td>{e.args.startTimestamp.toString()}</td>
-          <td>{e.args.duration.toString()}</td>
+          <td>{new Date(e.args.startTimestamp.toNumber() * 1000).toLocaleString()}</td>
+          <td>{e.args.duration.toString()} seconds</td>
         </tr> : null) : null}
       </tbody>
     </table>
