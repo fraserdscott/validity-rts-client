@@ -23,23 +23,29 @@ function CreateLobby() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <label>
-        Player 1:
-        <input type="text" placeholder="0x0000000000000000000000000000000000000000" onChange={e => setPlayer1(e.target.value)} />
-      </label>
-      <label>
-        Player 2:
-        <input type="text" placeholder="0x0000000000000000000000000000000000000000" onChange={e => setPlayer2(e.target.value)} />
-      </label>
-      <label>
-        Start timestamp:
-        <input type="datetime-local" placeholder="0" onChange={e => setStartTimestamp(e.target.value)} />
-      </label>
-      <label>
-        Duration:
-        <input type="number" placeholder="0" onChange={e => setDuration(parseInt(e.target.value))} /> seconds
-      </label>
-      <button onClick={() => createLobby(startTimestamp, duration, wallet, [player1, player2])}>Create</button>
+      <div style={{ display: 'flex', flexDirection: 'row', padding: 2 }}>
+        <label style={{ padding: 4 }}>
+          Player 1:
+          <input type="text" placeholder="0x0000000000000000000000000000000000000000" onChange={e => setPlayer1(e.target.value)} />
+        </label>
+        <label style={{ padding: 4 }}>
+          Player 2:
+          <input type="text" placeholder="0x0000000000000000000000000000000000000000" onChange={e => setPlayer2(e.target.value)} />
+        </label>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'row', padding: 2 }}>
+        <label style={{ padding: 4 }}>
+          Start timestamp:
+          <input type="datetime-local" placeholder="0" onChange={e => setStartTimestamp(e.target.value)} />
+        </label>
+        <label style={{ padding: 4 }}>
+          Duration:
+          <input type="number" placeholder="0" onChange={e => setDuration(parseInt(e.target.value))} /> seconds
+        </label>
+      </div>
+      <div>
+        <button onClick={() => createLobby(startTimestamp, duration, wallet, [player1, player2])}>Create</button>
+      </div>
     </div>
   );
 }

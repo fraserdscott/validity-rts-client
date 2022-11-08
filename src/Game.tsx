@@ -17,11 +17,6 @@ const move = (index: string, wallet: ethers.Wallet, selected: number, goalX: num
   contract.move(index, selected, Math.round(goalX), Math.round(goalY));
 }
 
-const settle = async (index: string, wallet: ethers.Wallet) => {
-  const contract = new ethers.Contract(ROLLUP_ADDRESS, rollup.abi, wallet);
-  contract.settle(index, '0x');
-}
-
 const isValidEvent = (e: MoveEvent, lobbyId: string, units: Array<Unit>) => e.lobbyId.toString() === lobbyId && e.unit < units.length;
 
 const TeamSpan = ({ i }: { i: number }) => {
@@ -127,7 +122,6 @@ function Canvas({ lobbyId }: { lobbyId: string }) {
     </div>
     <div>
       <h2>Lobby</h2>
-      <button onClick={() => settle(lobbyId, wallet)}>Settle</button>
       {lobby ? (
         <div>
           <div>

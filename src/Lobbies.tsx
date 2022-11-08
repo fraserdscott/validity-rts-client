@@ -5,11 +5,11 @@ import rollup from "./out/Rollup.sol/Rollup.json"
 import { useEffect, useState } from 'react';
 import CreateLobby from './CreateLobby';
 import { MNEMONIC, ROLLUP_ADDRESS, RPC_URL } from './Game';
+import { BLUE_TEAM_COLOR } from './frameRenderer';
+export const RED_TEAM_COLOR = "#FF0000";
 
 const wallet = ethers.Wallet.fromMnemonic(MNEMONIC)
   .connect(ethers.getDefaultProvider(RPC_URL));
-
-const formatAddress = (a: string) => `${a.slice(0, 6)}...${a.slice(-2)}`;
 
 const LobbyRow = ({ l, i, players }: { l: any, i: number, players: [string, string] | null }) => {
   if (!l.args) {
@@ -33,7 +33,10 @@ const LobbyRow = ({ l, i, players }: { l: any, i: number, players: [string, stri
       {l.args.duration.toNumber() / 60} minutes
     </td>
     <td>
-      {players ? players.map(p => formatAddress(p)).toString() : "..."}
+      {players ? players[0] : null}
+    </td>
+    <td>
+      {players ? players[1] : null}
     </td>
     <td>
       {startDate.getTime() < Date.now() && endDate.getTime() > Date.now() ? "In progress" : null}
@@ -45,7 +48,7 @@ const LobbyRow = ({ l, i, players }: { l: any, i: number, players: [string, stri
         to={`/lobbies/${i}`}
       >
         <button style={{ fontSize: 15 }}>
-          Go
+          View
         </button>
       </Link>
     </td>
@@ -69,25 +72,27 @@ function Lobbies() {
   }, [lobbies]);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <h1>Validity Wars</h1>
-      <div>
+    <div style={{ display: 'flex', flexDirection: 'column', padding: 20 }}>
+      <h1 style={{ fontFamily: 'Tahoma' }}>Validity Wars</h1>
+      <div style={{ border: 'solid', padding: 8 }}>
+        <h2>Account</h2>
         You are logged in as: {wallet.address}
       </div>
-      <div>
+      <div style={{ border: 'solid', padding: 8 }}>
         <h2>Create a lobby</h2>
         <CreateLobby />
       </div>
-      <div>
+      <div style={{ border: 'solid', padding: 8 }}>
         <h2>Lobbies</h2>
-        <table>
+        <table style={{ width: "100%" }}>
           <thead>
             <tr>
               <th>ID</th>
               <th>Start time</th>
               <th>End time</th>
               <th>Duration</th>
-              <th>Players</th>
+              <th><span style={{ color: RED_TEAM_COLOR }}>Red Team</span></th>
+              <th><span style={{ color: BLUE_TEAM_COLOR }}>Blue Team</span></th>
               <th>Stage</th>
               <th></th>
             </tr>
@@ -99,7 +104,12 @@ function Lobbies() {
           </tbody>
         </table>
       </div>
-
+      <div style={{ border: 'solid', padding: 8 }}>
+        <h2>Events</h2>
+        <Link to={`/events`}>
+          <button style={{ fontSize: 15 }}>View all past events</button>
+        </Link>
+      </div>
     </div>
   );
 }
