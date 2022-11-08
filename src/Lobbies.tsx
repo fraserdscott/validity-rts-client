@@ -37,8 +37,8 @@ const LobbyRow = ({ l, i, players }: { l: any, i: number, players: [string, stri
     </td>
     <td>
       {startDate.getTime() < Date.now() && endDate.getTime() > Date.now() ? "In progress" : null}
-      {startDate.getTime() > Date.now() && endDate.getTime() > Date.now() ? "Finished" : null}
-      {startDate.getTime() < Date.now() && endDate.getTime() < Date.now() ? "Scheduled" : null}
+      {startDate.getTime() > Date.now() && endDate.getTime() > Date.now() ? "Scheduled" : null}
+      {startDate.getTime() < Date.now() && endDate.getTime() < Date.now() ? "Finished" : null}
     </td>
     <td>
       <Link
