@@ -1,9 +1,9 @@
 import rollup from "./out/Rollup.sol/Rollup.json"
 import { ethers } from "ethers";
 import { useEffect, useState } from "react";
-import { ROLLUP_ADDRESS, RPC_URL } from "./Game";
+import { MNEMONIC, ROLLUP_ADDRESS, RPC_URL } from "./Game";
 
-const wallet = ethers.Wallet.fromMnemonic("test test test test test test test test test test test junk")
+const wallet = ethers.Wallet.fromMnemonic(MNEMONIC)
   .connect(ethers.getDefaultProvider(RPC_URL));
 
 function Events() {

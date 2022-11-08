@@ -6,8 +6,9 @@ import { addressEquals, distance, INITIAL_UNITS, Lobby, MoveEvent, simulate, Uni
 
 export const RPC_URL = "https://l2.op-bedrock.lattice.xyz";
 export const ROLLUP_ADDRESS = "0x02e8910b3b89690d4aec9fcc0ae2cd16fb6a4828";
+export const MNEMONIC = "test test test test test test test test test test test junk";
 
-const wallet = ethers.Wallet.fromMnemonic("test test test test test test test test test test test junk")
+const wallet = ethers.Wallet.fromMnemonic(MNEMONIC)
   .connect(ethers.getDefaultProvider(RPC_URL));
 
 const move = (index: string, wallet: ethers.Wallet, selected: number, goalX: number, goalY: number) => {
