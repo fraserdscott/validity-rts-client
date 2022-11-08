@@ -117,13 +117,13 @@ function Canvas({ lobbyId }: { lobbyId: string }) {
       ref={canvasRef}
       onClick={(e) => handleClick(e.nativeEvent)}
     />
-    <div>
-      {players.find(p => p.toLowerCase() === wallet.address.toLowerCase()) ? 
-      <div>You are controlling: {players.filter(p => p.toLowerCase() === wallet.address.toLowerCase()).map((p, i) => <TeamSpan key={i} i={i} />)}</div>:
-      <div>You are not part of this lobby.</div>}
+    <h2>Lobby #{lobbyId}</h2>
+    <div style={{ paddingBottom: 8 }}>
+      {players.find(p => p.toLowerCase() === wallet.address.toLowerCase()) ?
+        <div>You are controlling: {players.filter(p => p.toLowerCase() === wallet.address.toLowerCase()).map((p, i) => <TeamSpan key={i} i={i} />)}</div> :
+        <div>You are not part of this lobby.</div>}
     </div>
     <div>
-      <h2>Lobby</h2>
       {lobby ? (
         <div>
           <div>

@@ -7,7 +7,6 @@ function Lobby() {
         <Link to={`/`}>
             Home
         </Link>
-        <h1>Lobby #{params.lobbyId}</h1>
         <div className="App">
             {params.lobbyId ?
                 <Game lobbyId={params.lobbyId} /> : <div>Invalid lobby ID.</div>
