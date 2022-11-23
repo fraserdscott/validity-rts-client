@@ -2,10 +2,10 @@ import { useRef, useEffect, useState } from "react";
 import { ethers } from "ethers";
 import rollup from "./out/Rollup.sol/Rollup.json"
 import frameRenderer, { RED_TEAM_COLOR, BLUE_TEAM_COLOR } from "./frameRenderer";
-import { addressEquals, distance, INITIAL_UNITS, Lobby, MoveEvent, simulate, Unit, UnitType } from "./utils";
+import { addressEquals, distance, INITIAL_UNITS, Lobby, MoveEvent, simulate, Unit } from "./utils";
 
-export const RPC_URL = "https://l2.op-bedrock.lattice.xyz";
-export const ROLLUP_ADDRESS = "0x02e8910b3b89690d4aec9fcc0ae2cd16fb6a4828";
+export const RPC_URL = "https://follower.super-degen-chain.lattice.xyz";
+export const ROLLUP_ADDRESS = "0xcbeaf3bde82155f56486fb5a1072cb8baaf547cc";
 export const MNEMONIC = "test test test test test test test test test test test junk";
 
 const wallet = ethers.Wallet.fromMnemonic(MNEMONIC)
