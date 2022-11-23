@@ -5,7 +5,7 @@ import frameRenderer, { RED_TEAM_COLOR, BLUE_TEAM_COLOR } from "./frameRenderer"
 import { addressEquals, distance, INITIAL_UNITS, Lobby, MoveEvent, simulate, Unit } from "./utils";
 
 export const RPC_URL = "https://follower.super-degen-chain.lattice.xyz";
-export const ROLLUP_ADDRESS = "0xcbeaf3bde82155f56486fb5a1072cb8baaf547cc";
+export const ROLLUP_ADDRESS = "0x162a433068f51e18b7d13932f27e66a3f99e6890";
 export const MNEMONIC = "test test test test test test test test test test test junk";
 
 const wallet = ethers.Wallet.fromMnemonic(MNEMONIC)
